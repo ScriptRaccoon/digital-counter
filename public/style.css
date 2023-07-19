@@ -31,7 +31,7 @@ body {
 .segment {
 	--color: #70e0f0;
 	--unit: calc(0.2 * var(--width));
-	--offset: calc(0.05 * var(--unit));
+	--offset: 2px;
 	--on: var(--unit) solid var(--color);
 	--off: var(--unit) solid transparent;
 	--on-half: calc(0.5 * var(--unit)) solid var(--color);
@@ -65,25 +65,20 @@ body {
 /* horizontal segment, middle */
 
 .segment:nth-child(3) {
-	top: 50%;
-	left: calc(4 * var(--offset));
-	right: calc(4 * var(--offset));
-	border-radius: 0;
-	border-top: var(--on-half);
-	border-left: var(--off);
-	border-right: var(--off);
-}
-
-.segment:nth-child(3)::before {
-	content: "";
-	position: inherit;
-	border-radius: inherit;
-	top: calc(-1 * var(--unit));
-	left: calc(-1 * var(--unit));
-	width: 100%;
-	border-bottom: var(--on-half);
-	border-left: var(--off);
-	border-right: var(--off);
+	top: calc(50% - 0.5 * var(--unit));
+	left: calc(3 * var(--offset));
+	right: calc(3 * var(--offset));
+	height: calc(var(--unit));
+	background-color: var(--color);
+	clip-path: polygon(
+		0% 50%,
+		var(--unit) 0%,
+		calc(100% - var(--unit)) 0%,
+		100% 50%,
+		calc(100% - var(--unit)) 100%,
+		var(--unit) 100%,
+		0% 50%
+	);
 }
 
 /* vertical segments, top */
