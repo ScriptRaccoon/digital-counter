@@ -10,33 +10,35 @@ body {
 	background-color: #000;
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
 }
 
 /* displays and segments */
 
 .display-group {
-	margin-top: 4rem;
 	display: flex;
-	gap: 1.25rem;
+	gap: min(2.5rem, 6vw);
 }
 
 .display {
-	width: 5rem;
-	height: 8rem;
+	--width: min(10rem, 18vw);
+	width: var(--width);
+	aspect-ratio: 5/8;
 	position: relative;
 }
 
 .segment {
 	--color: #70e0f0;
-	--unit: 1rem;
-	--offset: 0.05rem;
+	--unit: calc(0.2 * var(--width));
+	--offset: calc(0.05 * var(--unit));
 	--on: var(--unit) solid var(--color);
-	--on-half: calc(0.5 * var(--unit)) solid var(--color);
 	--off: var(--unit) solid transparent;
+	--on-half: calc(0.5 * var(--unit)) solid var(--color);
 	--off-half: calc(0.5 * var(--unit)) solid transparent;
 	opacity: 0.05;
 	position: absolute;
-	border-radius: 1rem;
+	border-radius: 100vw;
 	transition: opacity 80ms linear;
 }
 
@@ -64,8 +66,8 @@ body {
 
 .segment:nth-child(3) {
 	top: 50%;
-	left: calc(3.25 * var(--offset));
-	right: calc(3.25 * var(--offset));
+	left: calc(4 * var(--offset));
+	right: calc(4 * var(--offset));
 	border-radius: 0;
 	border-top: var(--on-half);
 	border-left: var(--off);
