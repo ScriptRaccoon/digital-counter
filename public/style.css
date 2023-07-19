@@ -1,0 +1,140 @@
+/* global stuff */
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #000;
+	display: flex;
+	justify-content: center;
+}
+
+/* displays and segments */
+
+.display-group {
+	margin-top: 4rem;
+	display: flex;
+	gap: 1.25rem;
+}
+
+.display {
+	width: 5rem;
+	height: 8rem;
+	position: relative;
+}
+
+.segment {
+	--color: #70e0f0;
+	--unit: 1rem;
+	--offset: 0.05rem;
+	--on: var(--unit) solid var(--color);
+	--on-half: calc(0.5 * var(--unit)) solid var(--color);
+	--off: var(--unit) solid transparent;
+	--off-half: calc(0.5 * var(--unit)) solid transparent;
+	opacity: 0.05;
+	position: absolute;
+	border-radius: 1rem;
+	transition: opacity 80ms linear;
+}
+
+/* horizontal segments, top and bottom */
+
+.segment:nth-child(1) {
+	top: 0;
+	left: var(--offset);
+	right: var(--offset);
+	border-top: var(--on);
+	border-left: var(--off);
+	border-right: var(--off);
+}
+
+.segment:nth-child(2) {
+	bottom: 0;
+	left: var(--offset);
+	right: var(--offset);
+	border-bottom: var(--on);
+	border-left: var(--off);
+	border-right: var(--off);
+}
+
+/* horizontal segment, middle */
+
+.segment:nth-child(3) {
+	top: 50%;
+	left: calc(3.25 * var(--offset));
+	right: calc(3.25 * var(--offset));
+	border-radius: 0;
+	border-top: var(--on-half);
+	border-left: var(--off);
+	border-right: var(--off);
+}
+
+.segment:nth-child(3)::before {
+	content: "";
+	position: inherit;
+	border-radius: inherit;
+	top: calc(-1 * var(--unit));
+	left: calc(-1 * var(--unit));
+	width: 100%;
+	border-bottom: var(--on-half);
+	border-left: var(--off);
+	border-right: var(--off);
+}
+
+/* vertical segments, top */
+
+.segment:nth-child(4) {
+	top: var(--offset);
+	left: 0;
+	height: calc(50% - var(--offset));
+	border-top: var(--off);
+	border-bottom: var(--off-half);
+	border-left: var(--on);
+}
+
+.segment:nth-child(5) {
+	top: var(--offset);
+	right: 0;
+	height: calc(50% - var(--offset));
+	border-top: var(--off);
+	border-bottom: var(--off-half);
+	border-right: var(--on);
+}
+
+/* vertical segments, bottom */
+
+.segment:nth-child(6) {
+	left: 0;
+	top: 50%;
+	bottom: var(--offset);
+	border-top: var(--off-half);
+	border-bottom: var(--off);
+	border-left: var(--on);
+}
+
+.segment:nth-child(7) {
+	right: 0;
+	top: 50%;
+	bottom: var(--offset);
+	border-top: var(--off-half);
+	border-bottom: var(--off);
+	border-right: var(--on);
+}
+
+/* digit definitions */
+
+.display[data-digit="0"] :not(:nth-child(3)),
+.display[data-digit="1"] :is(:nth-child(5), :nth-child(7)),
+.display[data-digit="2"] :not(:nth-child(4), :nth-child(7)),
+.display[data-digit="3"] :not(:nth-child(4), :nth-child(6)),
+.display[data-digit="4"] :not(:nth-child(1), :nth-child(2), :nth-child(6)),
+.display[data-digit="5"] :not(:nth-child(5), :nth-child(6)),
+.display[data-digit="6"] :not(:nth-child(5)),
+.display[data-digit="7"] :is(:nth-child(1), :nth-child(5), :nth-child(7)),
+.display[data-digit="8"] *,
+.display[data-digit="9"] :not(:nth-child(6)) {
+	opacity: 1;
+}
