@@ -18,11 +18,11 @@ body {
 
 .display-group {
 	display: flex;
-	gap: min(2.5rem, 6vw);
+	gap: min(2.5rem, 5vw);
 }
 
 .display {
-	--width: min(10rem, 18vw);
+	--width: min(10rem, 20vw);
 	width: var(--width);
 	aspect-ratio: 5/8;
 	position: relative;
@@ -39,7 +39,6 @@ body {
 	opacity: 0.05;
 	position: absolute;
 	border-radius: 100vw;
-	transition: opacity 80ms linear;
 }
 
 /* horizontal segments, top and bottom */
@@ -70,6 +69,7 @@ body {
 	right: calc(3 * var(--offset));
 	height: calc(var(--unit));
 	background-color: var(--color);
+	/* hexagon-shape */
 	clip-path: polygon(
 		0% 50%,
 		var(--unit) 0%,
