@@ -4,10 +4,11 @@ let counter = 0;
 
 function update_counter() {
 	counter++;
-	const str = counter.toString();
+	let str = counter.toString();
 
 	if (str.length > displays.length) {
 		counter = 0;
+		str = "0";
 		displays.forEach((display) => display.setAttribute("data-digit", ""));
 	}
 
