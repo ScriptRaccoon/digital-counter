@@ -43,22 +43,22 @@ body {
 
 /* horizontal segments, top and bottom */
 
-.segment:nth-child(1) {
-	top: 0;
+.segment:nth-child(1),
+.segment:nth-child(2) {
 	left: var(--offset);
 	right: var(--offset);
-	border-top: var(--on);
 	border-left: var(--off);
 	border-right: var(--off);
 }
 
+.segment:nth-child(1) {
+	top: 0;
+	border-top: var(--on);
+}
+
 .segment:nth-child(2) {
 	bottom: 0;
-	left: var(--offset);
-	right: var(--offset);
 	border-bottom: var(--on);
-	border-left: var(--off);
-	border-right: var(--off);
 }
 
 /* horizontal segment, middle */
@@ -83,41 +83,41 @@ body {
 
 /* vertical segments, top */
 
-.segment:nth-child(4) {
+.segment:nth-child(4),
+.segment:nth-child(5) {
 	top: var(--offset);
-	left: 0;
 	height: calc(50% - var(--offset));
 	border-top: var(--off);
 	border-bottom: var(--off-half);
+}
+
+.segment:nth-child(4) {
+	left: 0;
 	border-left: var(--on);
 }
 
 .segment:nth-child(5) {
-	top: var(--offset);
 	right: 0;
-	height: calc(50% - var(--offset));
-	border-top: var(--off);
-	border-bottom: var(--off-half);
 	border-right: var(--on);
 }
 
 /* vertical segments, bottom */
 
-.segment:nth-child(6) {
-	left: 0;
-	top: 50%;
+.segment:nth-child(6),
+.segment:nth-child(7) {
+	height: calc(50% - var(--offset));
 	bottom: var(--offset);
 	border-top: var(--off-half);
 	border-bottom: var(--off);
+}
+
+.segment:nth-child(6) {
+	left: 0;
 	border-left: var(--on);
 }
 
 .segment:nth-child(7) {
 	right: 0;
-	top: 50%;
-	bottom: var(--offset);
-	border-top: var(--off-half);
-	border-bottom: var(--off);
 	border-right: var(--on);
 }
 
