@@ -34,7 +34,6 @@ body {
 	--offset: 2px;
 	--on: var(--unit) solid var(--color);
 	--off: var(--unit) solid transparent;
-	--on-half: calc(0.5 * var(--unit)) solid var(--color);
 	--off-half: calc(0.5 * var(--unit)) solid transparent;
 	opacity: 0.05;
 	position: absolute;
@@ -76,8 +75,7 @@ body {
 		calc(100% - var(--unit)) 0%,
 		100% 50%,
 		calc(100% - var(--unit)) 100%,
-		var(--unit) 100%,
-		0% 50%
+		var(--unit) 100%
 	);
 }
 
